@@ -16,7 +16,7 @@ public class AuthController {
 
     // 🔐 LOGIN
     @PostMapping("/login")
-    public Usuario login(@RequestBody Usuario usuario) {
+    public ResponseEntity<?> login(@RequestBody Usuario usuario) {
 
         Usuario user = repository.findByUsernameAndPassword(
                 usuario.getUsername(),
@@ -24,8 +24,12 @@ public class AuthController {
         );
 
         if (user != null) {
-            return user;
+
+            return ResponseEntity.ok(user);
+
         } else {
-            throw new RuntimeException("ERROR");
+
+            return ResponseEntity.status(401)
+                    .body("Usuario o contraseña incorrectos");
         }
     } }
