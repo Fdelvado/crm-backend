@@ -10,24 +10,64 @@ public class Usuario {
     private Long id;
 
     private String username;
+
     private String password;
 
     private String nombre;
-    private String avatar; // ruta o URL
 
-    // getters y setters
+    private String avatar;
 
-    public Long getId() { return id; }
+    private String rol;
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    // =========================
+    // GETTERS Y SETTERS
+    // =========================
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getAvatar() { return avatar; }
-    public void setAvatar(String avatar) { this.avatar = avatar; }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }

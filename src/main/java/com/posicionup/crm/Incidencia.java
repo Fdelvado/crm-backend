@@ -8,10 +8,14 @@ public class Incidencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
-    private Long clienteId; // 🔥 CAMBIO CLAVE
+    // 🔥 NUEVO → nombre escrito manual
+    private String cliente;
+
+    // 🔥 opcional (lo dejamos por si luego lo usas)
+    private Long clienteId;
+
     private String empresa;
     private String descripcion;
     private String estado;
@@ -22,6 +26,10 @@ public class Incidencia {
 
     public Long getId() {
         return id;
+    }
+
+    public String getCliente() { // 🔥 NUEVO
+        return cliente;
     }
 
     public Long getClienteId() {
@@ -52,6 +60,10 @@ public class Incidencia {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setCliente(String cliente) { // 🔥 NUEVO
+        this.cliente = cliente;
     }
 
     public void setClienteId(Long clienteId) {

@@ -3,7 +3,7 @@ package com.posicionup.crm;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "clientes") // 👈 control total
+@Table(name = "clientes")
 
 public class Cliente {
 
@@ -11,12 +11,16 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String codigo; // 🔥 AÑADIR ESTO
+    private String codigo;
 
     private String nombre;
     private String email;
     private String telefono;
     private String empresa;
+
+    // 🔥 NUEVOS CAMPOS
+    private String cif;
+    private String direccion;
 
     public Cliente() {}
 
@@ -27,7 +31,7 @@ public class Cliente {
         this.empresa = empresa;
     }
 
-    // GETTERS & SETTERS
+    // ================= GETTERS & SETTERS =================
 
     public Long getId() {
         return id;
@@ -37,7 +41,7 @@ public class Cliente {
         return codigo;
     }
 
-    public void setCodigo(String codigo) { // 🔥 ESTO ES LO QUE FALTABA
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -71,5 +75,23 @@ public class Cliente {
 
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
+    }
+
+    // 🔥 NUEVOS GETTERS/SETTERS
+
+    public String getCif() {
+        return cif;
+    }
+
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

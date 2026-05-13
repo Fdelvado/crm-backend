@@ -1,9 +1,11 @@
 package com.posicionup.crm;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class EmailService {
@@ -13,12 +15,18 @@ public class EmailService {
 
     public void enviarCorreo(String para, String asunto, String mensaje) {
 
-        SimpleMailMessage mail = new SimpleMailMessage();
+        try {
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
-        mail.setTo(para);
-        mail.setSubject(asunto);
-        mail.setText(mensaje);
+            helper.setTo(para);
+            helper.setSubject(asunto);
+            helper.setText(mensaje, true); // 🔥 HTML ACTIVADO
 
-        mailSender.send(mail);
+            mailSender.send(mimeMessage);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

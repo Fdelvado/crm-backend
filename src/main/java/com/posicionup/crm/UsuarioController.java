@@ -3,7 +3,7 @@ package com.posicionup.crm;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/usuarios")
 @CrossOrigin(origins = "*")
 public class UsuarioController {
 
@@ -13,15 +13,45 @@ public class UsuarioController {
         this.repository = repository;
     }
 
+    // =========================
     // ✏️ ACTUALIZAR PERFIL
-    @PutMapping("/usuario")
-    public Usuario actualizarPerfil(@RequestBody Usuario datos) {
+    // =========================
 
-        Usuario user = repository.findById(datos.getId()).orElseThrow();
+    @PutMapping("/{id}")
+    public Usuario actualizarPerfil(
+            @PathVariable Long id,
+            @RequestBody Usuario datos
+    ) {
 
-        user.setNombre(datos.getNombre());
-        user.setAvatar(datos.getAvatar());
+        Usuario user =
+                repository.findById(id)
+                        .orElseThrow();
+
+        user.setNombre(
+                datos.getNombre()
+        );
+
+        user.setAvatar(
+                datos.getAvatar()
+        );
+
+        user.setRol(
+                datos.getRol()
+        );
 
         return repository.save(user);
+    }
+
+    // =========================
+    // 👤 OBTENER USUARIO
+    // =========================
+
+    @GetMapping("/{id}")
+    public Usuario obtenerUsuario(
+            @PathVariable Long id
+    ) {
+
+        return repository.findById(id)
+                .orElseThrow();
     }
 }

@@ -42,10 +42,24 @@ public class ClienteController {
 
         Cliente cliente = repository.findById(id).orElseThrow();
 
-        cliente.setNombre(clienteActualizado.getNombre());
-        cliente.setEmail(clienteActualizado.getEmail());
-        cliente.setTelefono(clienteActualizado.getTelefono());
-        cliente.setEmpresa(clienteActualizado.getEmpresa());
+        if (clienteActualizado.getNombre() != null)
+            cliente.setNombre(clienteActualizado.getNombre());
+
+        if (clienteActualizado.getEmail() != null)
+            cliente.setEmail(clienteActualizado.getEmail());
+
+        if (clienteActualizado.getTelefono() != null)
+            cliente.setTelefono(clienteActualizado.getTelefono());
+
+        if (clienteActualizado.getEmpresa() != null)
+            cliente.setEmpresa(clienteActualizado.getEmpresa());
+
+        // 🔥 CLAVE
+        if (clienteActualizado.getCif() != null)
+            cliente.setCif(clienteActualizado.getCif());
+
+        if (clienteActualizado.getDireccion() != null)
+            cliente.setDireccion(clienteActualizado.getDireccion());
 
         return repository.save(cliente);
     }
